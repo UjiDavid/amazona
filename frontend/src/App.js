@@ -231,7 +231,7 @@ function App() {
         <button className={sidebarIsOpen ? 'openbtn visible' : 'openbtn'} onClick={() => setSidebarIsOpen(!sidebarIsOpen)}>
           <FontAwesomeIcon icon="fa-solid fa-angles-right" />
         </button>
-        <main className="mb-3 mt-3">
+        <main>
           <Container>
             <Routes>
               <Route path="/product/:slug" element={<ProductScreen />} />
