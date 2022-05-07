@@ -5,6 +5,7 @@ import Rating from './Rating';
 import axios from 'axios';
 import { useContext } from 'react';
 import { Store } from '../Store';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Product(props) {
   const { product } = props;
@@ -31,21 +32,28 @@ function Product(props) {
   return (
     <Card>
       <Link to={`/product/${product.slug}`}>
-        <img src={product.image} className="card-img-top" alt={product.name} />
+        <img src={product.thumbnail || product.image} className="card-img-top" alt={product.name} width="200" height={400} />
       </Link>
       <Card.Body>
         <Link to={`/product/${product.slug}`}>
           <Card.Title>{product.name}</Card.Title>
         </Link>
+        <Card.Text>{product.description}</Card.Text>
         <Rating rating={product.rating} numReviews={product.numReviews} />
-        <Card.Text>${product.price}</Card.Text>
-        {product.countInStock === 0 ? (
-          <Button variant="light" disabled>
-            Out of stock
-          </Button>
-        ) : (
-          <Button onClick={() => addToCartHandler(product)}>Add to cart</Button>
-        )}
+
+        <div className="card-footer mt-3">
+          <Card.Text> &#8358;{product.price}</Card.Text>
+          {product.countInStock === 0 ? (
+            <Button variant="light" disabled>
+              Out of stock
+            </Button>
+          ) : (
+            <Button variant="danger" onClick={() => addToCartHandler(product)}>
+              Add to cart
+              <FontAwesomeIcon icon="fa-solid fa-cart-plus" />
+            </Button>
+          )}
+        </div>
       </Card.Body>
     </Card>
   );

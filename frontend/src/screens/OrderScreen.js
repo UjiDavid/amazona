@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { PaystackButton } from 'react-paystack';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
@@ -30,6 +31,18 @@ function reducer(state, action) {
       return { ...state, loadingPay: false };
     case 'PAY_RESET':
       return { ...state, loadingPay: false, successPay: false };
+    case 'DELIVER_REQUEST':
+      return { ...state, loadingDeliver: true };
+    case 'DELIVER_SUCCESS':
+      return { ...state, loadingDeliver: false, successDeliver: true };
+    case 'DELIVER_FAIL':
+      return { ...state, loadingDeliver: false };
+    case 'DELIVER_RESET':
+      return {
+        ...state,
+        loadingDeliver: false,
+        successDeliver: false,
+      };
 
     default:
       return state;
@@ -47,7 +60,7 @@ export default function OrderScreen() {
     window.location.reload(false);
   }
 
-  const [{ loading, error, order, successPay, loadingPay }, dispatch] = useReducer(reducer, {
+  const [{ loading, error, order, successPay, loadingPay, loadingDeliver, successDeliver }, dispatch] = useReducer(reducer, {
     loading: true,
     order: {},
     error: '',
@@ -101,10 +114,32 @@ export default function OrderScreen() {
     if (!userInfo) {
       return navigate('/login');
     }
-    if (!order._id || successPay || (order._id && order._id !== orderId)) {
+    if (!order._id || successPay || successDeliver || (order._id && order._id !== orderId)) {
       fetchOrder();
+      if (successDeliver) {
+        dispatch({ type: 'DELIVER_RESET' });
+      }
     }
-  }, [order, userInfo, orderId, successPay, navigate]);
+  }, [order, userInfo, orderId, navigate, successPay, successDeliver]);
+
+  async function deliverOrderHandler() {
+    try {
+      dispatch({ type: 'DELIVER_REQUEST' });
+      const { data } = await axios.put(
+        `/api/orders/${order._id}/deliver`,
+        {},
+        {
+          headers: { authorization: `Bearer ${userInfo.token}` },
+        }
+      );
+      dispatch({ type: 'DELIVER_SUCCESS', payload: data });
+      toast.success('Order is delivered');
+    } catch (err) {
+      toast.error(getError(err));
+      dispatch({ type: 'DELIVER_FAIL' });
+    }
+  }
+
   return loading ? (
     <LoadingBox></LoadingBox>
   ) : error ? (
@@ -123,6 +158,12 @@ export default function OrderScreen() {
               <Card.Text>
                 <strong>Name:</strong> {order.shippingAddress.fullName} <br />
                 <strong>Address: </strong> {order.shippingAddress.address},{order.shippingAddress.city}, {order.shippingAddress.postalCode},{order.shippingAddress.country}
+                &nbsp;
+                {order.shippingAddress.location && order.shippingAddress.location.lat && (
+                  <a target="_new" href={`https://maps.google.com?q=${order.shippingAddress.location.lat},${order.shippingAddress.location.lng}`}>
+                    Show On Map
+                  </a>
+                )}
               </Card.Text>
               {order.isDelivered ? <MessageBox variant="success">Delivered at {order.deliveredAt}</MessageBox> : <MessageBox variant="danger">Not Delivered</MessageBox>}
             </Card.Body>
@@ -150,7 +191,7 @@ export default function OrderScreen() {
                       <Col md={3}>
                         <span>{item.quantity}</span>
                       </Col>
-                      <Col md={3}>${item.price}</Col>
+                      <Col md={3}>&#8358;{item.price}</Col>
                     </Row>
                   </ListGroup.Item>
                 ))}
@@ -166,19 +207,13 @@ export default function OrderScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>Items</Col>
-                    <Col>${order.itemsPrice.toFixed(2)}</Col>
+                    <Col>&#8358;{order.itemsPrice.toFixed(2)}</Col>
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Row>
                     <Col>Shipping</Col>
-                    <Col>${order.shippingPrice.toFixed(2)}</Col>
-                  </Row>
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  <Row>
-                    <Col>Tax</Col>
-                    <Col>${order.taxPrice.toFixed(2)}</Col>
+                    <Col>&#8358;{order.shippingPrice.toFixed(2)}</Col>
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
@@ -187,7 +222,7 @@ export default function OrderScreen() {
                       <strong> Order Total</strong>
                     </Col>
                     <Col>
-                      <strong>${order.totalPrice.toFixed(2)}</strong>
+                      <strong>&#8358;{order.totalPrice.toFixed(2)}</strong>
                     </Col>
                   </Row>
                 </ListGroup.Item>
@@ -197,6 +232,16 @@ export default function OrderScreen() {
                       <PaystackButton {...componentProps} />
                     </div>
                     {loadingPay && <LoadingBox></LoadingBox>}
+                  </ListGroup.Item>
+                )}
+                {userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+                  <ListGroup.Item>
+                    {loadingDeliver && <LoadingBox></LoadingBox>}
+                    <div className="d-grid">
+                      <Button type="button" onClick={deliverOrderHandler}>
+                        Deliver Order
+                      </Button>
+                    </div>
                   </ListGroup.Item>
                 )}
               </ListGroup>

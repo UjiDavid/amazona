@@ -13,14 +13,24 @@ export default function SearchBox() {
     navigate(query ? `/search/?query=${query}` : '/search');
   };
 
+  const [isActive, setActive] = useState('');
+  const ToggleClass = () => {
+    setActive(!isActive);
+  };
   return (
-    <Form className="d-flex me-auto" onSubmit={submitHandler}>
-      <InputGroup>
-        <FormControl type="text" name="q" id="q" onChange={(e) => setQuery(e.target.value)} placeholder="search products..." aria-label="Search Products" aria-describedby="button-search"></FormControl>
-        <Button variant="outline-primary" type="submit" id="button-search">
-          <i className="fas fa-search"></i>
-        </Button>
-      </InputGroup>
-    </Form>
+    <div className={isActive ? 'search active' : 'search'}>
+      <Form className="searchform" onSubmit={submitHandler}>
+        <InputGroup>
+          <FormControl type="text" className="searchinput" name="q" id="q" onChange={(e) => setQuery(e.target.value)} placeholder="search products..." aria-label="Search Products" aria-describedby="button-search"></FormControl>
+          <Button variant="outline-danger" type="submit" id="button-search">
+            <i className="fas fa-search"></i>
+          </Button>
+        </InputGroup>
+      </Form>
+      <button className="searchbtn" onClick={ToggleClass}>
+        <i className="fas fa-search searchicon"></i>
+        <i className="fas fa-times xicon"></i>
+      </button>
+    </div>
   );
 }
