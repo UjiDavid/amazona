@@ -37,12 +37,18 @@ export default function AboutScreen() {
               <div className="left-content">
                 <h4>Who we are &amp; What we do?</h4>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta dolorem non blanditiis ex
-                  fugiat.
-                  <br /> Lorem ipsum dolor sit amet, consectetur adipisicing elit Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti eum ratione ex ea praesentium quibusdam? Aut,
-                  in eum facere corrupti necessitatibus perspiciatis{' '}
+                  Sixteen Clothing is an online fashion boutique based in Nigeria. We offer quality clothes, shoes, bags and accesories at an affordable price
+                  <br /> We offer the best quality at unbeatable prices. Orders within Abuja are delivered the next working day. Orders outside Abuja are delivered within 1-3 working days after order is made. No pickups at our office, our website is
+                  available 24/7 for your online shopping.
+                  <br />
+                  Subscribe to our newsletter and follow us across our social media platforms to get updates on New Arrivals and Best Offers!
                 </p>
                 <ul className="social-icons">
+                  <li>
+                    <a href="#">
+                      <i className="fa fa-instagram"></i>
+                    </a>
+                  </li>
                   <li>
                     <a href="#">
                       <i className="fa fa-facebook"></i>
@@ -56,11 +62,6 @@ export default function AboutScreen() {
                   <li>
                     <a href="#">
                       <i className="fa fa-linkedin"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="fa fa-behance"></i>
                     </a>
                   </li>
                 </ul>
@@ -102,7 +103,7 @@ export default function AboutScreen() {
                         </li>
                         <li>
                           <a href="#">
-                            <i className="fa fa-behance"></i>
+                            <i className="fa fa-instagram"></i>
                           </a>
                         </li>
                       </ul>
@@ -140,7 +141,7 @@ export default function AboutScreen() {
                         </li>
                         <li>
                           <a href="#">
-                            <i className="fa fa-behance"></i>
+                            <i className="fa fa-instagram"></i>
                           </a>
                         </li>
                       </ul>
@@ -178,7 +179,7 @@ export default function AboutScreen() {
                         </li>
                         <li>
                           <a href="#">
-                            <i className="fa fa-behance"></i>
+                            <i className="fa fa-instagram"></i>
                           </a>
                         </li>
                       </ul>
@@ -216,7 +217,7 @@ export default function AboutScreen() {
                         </li>
                         <li>
                           <a href="#">
-                            <i className="fa fa-behance"></i>
+                            <i className="fa fa-instagram"></i>
                           </a>
                         </li>
                       </ul>
@@ -254,7 +255,7 @@ export default function AboutScreen() {
                         </li>
                         <li>
                           <a href="#">
-                            <i className="fa fa-behance"></i>
+                            <i className="fa fa-instagram"></i>
                           </a>
                         </li>
                       </ul>
@@ -292,7 +293,7 @@ export default function AboutScreen() {
                         </li>
                         <li>
                           <a href="#">
-                            <i className="fa fa-behance"></i>
+                            <i className="fa fa-instagram"></i>
                           </a>
                         </li>
                       </ul>

@@ -51,7 +51,7 @@ export default function HomeScreen() {
   return (
     <div>
       <Helmet>
-        <title>Amazona</title>
+        <title>Sixteen Clothing</title>
       </Helmet>
       {/* <!-- Banner Starts Here --> */}
       <div className="page-heading home-heading header-text">
@@ -108,32 +108,20 @@ export default function HomeScreen() {
             </div>
             <div className="col-md-6">
               <div className="left-content">
-                <h4>Looking for the best products?</h4>
-                <p>
-                  <a rel="nofollow" href="https://templatemo.com/tm-546-sixteen-clothing" target="_parent">
-                    This template
-                  </a>{' '}
-                  is free to use for your business websites. However, you have no permission to redistribute the downloadable ZIP file on any template collection website.{' '}
-                  <a rel="nofollow" href="https://templatemo.com/contact">
-                    Contact us
-                  </a>{' '}
-                  for more info.
-                </p>
+                <h4>Looking for Quality products?</h4>
+                <p>Sixteen Clothing is an online fashion boutique based in Nigeria. We offer quality clothes, shoes, bags and accesories at an affordable price</p>
                 <ul className="featured-list">
                   <li>
-                    <a href="#">Lorem ipsum dolor sit amet</a>
+                    <h4>Quality Assured</h4>
                   </li>
                   <li>
-                    <a href="#">Consectetur an adipisicing elit</a>
+                    <h4>Nationwide Delivery</h4>
                   </li>
                   <li>
-                    <a href="#">It aquecorporis nulla aspernatur</a>
+                    <h4>Next Day delivery within Abuja</h4>
                   </li>
                   <li>
-                    <a href="#">Corporis, omnis doloremque</a>
-                  </li>
-                  <li>
-                    <a href="#">Non cum id reprehenderit</a>
+                    <h4>Online Shopping 24/7</h4>
                   </li>
                 </ul>
                 <a href="about.html" className="filled-button">
@@ -143,7 +131,7 @@ export default function HomeScreen() {
             </div>
             <div className="col-md-6">
               <div className="right-image">
-                <img src="assets/images/feature-image.jpg" alt="" />
+                <img src="images/open.jpg" alt="" />
               </div>
             </div>
           </div>

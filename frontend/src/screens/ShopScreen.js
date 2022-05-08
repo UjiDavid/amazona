@@ -50,7 +50,7 @@ export default function HomeScreen() {
   return (
     <div>
       <Helmet>
-        <title>Amazona</title>
+        <title>Sixteen-Clothing</title>
       </Helmet>
       {/* <!-- Page Content --> */}
       <div className="page-heading products-heading header-text">

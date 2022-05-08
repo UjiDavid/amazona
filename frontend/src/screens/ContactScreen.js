@@ -8,7 +8,7 @@ export default function ContactScreen() {
   const [faq3Active, setFaq3Active] = useState(false);
   const [faq4Active, setFaq4Active] = useState(false);
   return (
-    <div>
+    <div className="mb-3">
       <Helmet>
         <title>Contact Us</title>
       </Helmet>
@@ -48,9 +48,9 @@ export default function ContactScreen() {
               <div className="left-content">
                 <h4>About our office</h4>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.
+                  Our office is located at Purple Stone Plaza, Apo Resettlement Zone C, Abuja. No pickups at our office, our website is available 24/7 for your online shopping.
                   <br />
-                  Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti.
+                  Subscribe to our newsletter and follow us across our social media platforms to get updates on New Arrivals and Best Offers!
                 </p>
                 <ul className="social-icons">
                   <li>
@@ -87,7 +87,7 @@ export default function ContactScreen() {
                 <h2>Send us a Message</h2>
               </div>
             </div>
-            <div className="col-md-8">
+            <div className="col-md-6">
               <div className="contact-form">
                 <form id="contact" action="" method="post">
                   <div className="row">
@@ -122,7 +122,7 @@ export default function ContactScreen() {
                 </form>
               </div>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-6">
               <div className="section-heading">
                 <h2>FAQ</h2>
               </div>
@@ -188,45 +188,6 @@ export default function ContactScreen() {
                     <i className="fas fa-chevron-down"></i>
                     <i className="fas fa-times"></i>
                   </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="happy-clients">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="section-heading">
-                <h2>Our Happy Customers</h2>
-              </div>
-            </div>
-            <div className="col-md-12">
-              <div className="owl-clients owl-carousel">
-                <div className="client-item">
-                  <img src="assets/images/client-01.png" alt="1" />
-                </div>
-
-                <div className="client-item">
-                  <img src="assets/images/client-01.png" alt="2" />
-                </div>
-
-                <div className="client-item">
-                  <img src="assets/images/client-01.png" alt="3" />
-                </div>
-
-                <div className="client-item">
-                  <img src="assets/images/client-01.png" alt="4" />
-                </div>
-
-                <div className="client-item">
-                  <img src="assets/images/client-01.png" alt="5" />
-                </div>
-
-                <div className="client-item">
-                  <img src="assets/images/client-01.png" alt="6" />
                 </div>
               </div>
             </div>
