@@ -3,12 +3,14 @@ import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import Rating from './Rating';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import { useContext } from 'react';
 import { Store } from '../Store';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Product(props) {
   const { product } = props;
+  const imgthum = product.image.replace('/upload', '/upload/w_300/h_400');
 
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
@@ -23,6 +25,7 @@ function Product(props) {
       window.alert('Sorry. Product is out of stock');
       return;
     }
+    toast.success('Product added successfully');
     ctxDispatch({
       type: 'CART_ADD_ITEM',
       payload: { ...item, quantity },
@@ -30,9 +33,9 @@ function Product(props) {
   };
 
   return (
-    <Card>
+    <Card className="prods">
       <Link to={`/product/${product.slug}`}>
-        <img src={product.thumbnail || product.image} className="card-img-top" alt={product.name} width="200" height={400} />
+        <img src={imgthum} className="card-img-top" alt={product.name} width="200" height={400} />
       </Link>
       <Card.Body>
         <Link to={`/product/${product.slug}`}>

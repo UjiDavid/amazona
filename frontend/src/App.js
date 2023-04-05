@@ -182,7 +182,7 @@ function App() {
                   <button className={Adminlinks ? 'activebtn dropdown-btn' : 'dropdown-btn'} onClick={() => setAdminlinks(!Adminlinks)}>
                     <FontAwesomeIcon className="user" icon="fa-solid fa-user" />
                     Admin Links
-                    <i class="fa fa-caret-down"></i>
+                    <i className="fa fa-caret-down"></i>
                   </button>
                   <div className={Adminlinks ? 'adminlinks dropdown-container' : 'dropdown-container'}>
                     <ul>
@@ -347,21 +347,12 @@ function App() {
                       <div className="row">
                         <div className="col-md-7">
                           <fieldset>
-                            <input
-                              name="email"
-                              type="text"
-                              className="form-control"
-                              id="email"
-                              onfocus="if(this.value == 'Your Email...') { this.value = ''; }"
-                              onBlur="if(this.value == '') { this.value = 'Your Email...';}"
-                              value="Your Email..."
-                              required=""
-                            />
+                            <input name="email" type="text" className="form-control" id="email" placeholder="Your Email..." required="" />
                           </fieldset>
                         </div>
                         <div className="col-md-5">
                           <fieldset>
-                            <button type="submit" id="form-submit" class="button">
+                            <button type="submit" id="form-submit" className="button">
                               Subscribe Now!
                             </button>
                           </fieldset>

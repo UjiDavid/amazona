@@ -107,9 +107,17 @@ export default function HomeScreen() {
               </div>
             </div>
             <div className="col-md-6">
-              <div className="left-content">
+              <div className="right-image">
+                <img src="images/open.jpg" alt="" />
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="content">
                 <h4>Looking for Quality products?</h4>
-                <p>Sixteen Clothing is an online fashion boutique based in Nigeria. We offer quality clothes, shoes, bags and accesories at an affordable price</p>
+                <p>
+                  Sixteen Clothing is an online fashion boutique based in Nigeria. We offer quality clothes, shoes, bags and accesories at an
+                  affordable price
+                </p>
                 <ul className="featured-list">
                   <li>
                     <h4>Quality Assured</h4>
@@ -124,14 +132,9 @@ export default function HomeScreen() {
                     <h4>Online Shopping 24/7</h4>
                   </li>
                 </ul>
-                <a href="about.html" className="filled-button">
+                <Link to="/about" className="filled-button">
                   Read More
-                </a>
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="right-image">
-                <img src="images/open.jpg" alt="" />
+                </Link>
               </div>
             </div>
           </div>

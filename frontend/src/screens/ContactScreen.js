@@ -93,7 +93,7 @@ export default function ContactScreen() {
                   <div className="row">
                     <div className="col-lg-12 col-md-12 col-sm-12">
                       <fieldset>
-                        <input name="name" type="text" class="form-control" id="name" placeholder="Full Name" required="" />
+                        <input name="name" type="text" className="form-control" id="name" placeholder="Full Name" required="" />
                       </fieldset>
                     </div>
                     <div className="col-lg-12 col-md-12 col-sm-12">
